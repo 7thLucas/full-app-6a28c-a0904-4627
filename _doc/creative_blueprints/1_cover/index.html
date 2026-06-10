@@ -1,0 +1,54 @@
+<style>
+  .mode-landscape .sl-layout { flex-direction: row; }
+  .mode-portrait .sl-layout { flex-direction: column; }
+  .mode-landscape .sl-content { width: 55%; }
+  .mode-landscape .sl-visual { width: 45%; }
+  .mode-portrait .sl-content { width: 100%; }
+  .mode-portrait .sl-visual { width: 100%; height: 40%; }
+</style>
+
+<section class="w-full h-full overflow-auto bg-white">
+  <div class="sl-layout flex h-full p-10 gap-10">
+
+    <!-- Left: Content Column -->
+    <div class="sl-content flex flex-col justify-between">
+      <!-- Top badge -->
+      <div>
+        <span class="inline-block bg-amber-100 text-amber-800 text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full">
+          Leadership Coaching
+        </span>
+      </div>
+
+      <!-- Headline + Tagline -->
+      <div class="flex flex-col gap-5">
+        <h1 class="text-5xl font-extrabold leading-tight text-slate-900">
+          Lead at Every<br />Level.
+        </h1>
+        <p class="text-lg text-slate-600 leading-relaxed max-w-sm">
+          A professional coaching chatbot that diagnoses your leadership influence and guides you — step by step — through Maxwell's 5 Levels.
+        </p>
+        <div class="flex items-center gap-3 mt-2">
+          <div class="h-1 w-12 rounded-full bg-amber-500"></div>
+          <span class="text-sm text-slate-400 tracking-wide uppercase font-medium">Encouraging · Empathetic · Actionable</span>
+        </div>
+      </div>
+
+      <!-- Attribution -->
+      <div>
+        <data-attribution />
+      </div>
+    </div>
+
+    <!-- Right: Visual -->
+    <div class="sl-visual relative rounded-2xl overflow-hidden flex-shrink-0">
+      <img
+        src="https://api.qb-deck.quantumbyte.ai/common/image-generation?prompt=A%20composed%20leader%20standing%20confidently%20at%20a%20summit%2C%20warm%20golden%20light%2C%20editorial%20photography%2C%20aspirational%20mood%2C%20clean%20background"
+        alt="Leadership visual"
+        class="w-full h-full object-cover"
+      />
+      <!-- Subtle overlay so the image doesn't compete with text -->
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent"></div>
+    </div>
+
+  </div>
+</section>
