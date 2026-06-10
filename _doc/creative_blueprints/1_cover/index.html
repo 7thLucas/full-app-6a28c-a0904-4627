@@ -42,15 +42,16 @@
       </div>
     </div>
 
-    <!-- Right: Visual -->
-    <div class="sl-visual relative rounded-2xl overflow-hidden flex-shrink-0">
-      <img
-        src="https://api.qb-deck.quantumbyte.ai/common/image-generation?prompt=A%20composed%20leader%20standing%20confidently%20at%20a%20summit%2C%20warm%20golden%20light%2C%20editorial%20photography%2C%20aspirational%20mood%2C%20clean%20background"
-        alt="Leadership visual"
-        class="w-full h-full object-cover"
-      />
-      <!-- Subtle overlay so the image doesn't compete with text -->
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent"></div>
+    <!-- Right: Visual — 5-Levels ascending pyramid (people-free) -->
+    <div class="sl-visual relative rounded-2xl overflow-hidden flex-shrink-0 bg-black flex items-end justify-center p-8">
+      <div class="absolute top-6 right-6 w-24 h-24 rounded-full opacity-20" style="background-color: #38aa56;"></div>
+      <div class="flex flex-col items-center gap-2 w-full">
+        <div class="rounded-md text-white text-xs font-bold tracking-wide flex items-center justify-center" style="background-color:#38aa56; width:30%; height:38px;">5 · Pinnacle</div>
+        <div class="rounded-md text-white text-xs font-semibold flex items-center justify-center" style="background-color:#2b8444; width:45%; height:38px;">4 · People Dev</div>
+        <div class="rounded-md text-white text-xs font-semibold flex items-center justify-center" style="background-color:#226637; width:60%; height:38px;">3 · Production</div>
+        <div class="rounded-md text-white text-xs font-medium flex items-center justify-center" style="background-color:#1c5630; width:75%; height:38px;">2 · Permission</div>
+        <div class="rounded-md text-slate-200 text-xs font-medium flex items-center justify-center border border-zinc-700" style="width:90%; height:38px;">1 · Position</div>
+      </div>
     </div>
 
   </div>
