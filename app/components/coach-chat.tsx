@@ -230,7 +230,7 @@ export function CoachChat() {
 
       {/* Level bar */}
       {showLevelIndicator && (
-        <div className="px-4 py-2 bg-[#F0EDE6] border-b border-border">
+        <div className="px-4 py-2 bg-muted border-b border-border">
           <LevelIndicator currentLevel={currentLevel} maxwellLevels={maxwellLevels} />
         </div>
       )}
@@ -549,11 +549,11 @@ function LandingScreen({
 
 function getLevelColor(level: number): string {
   const colors: Record<number, string> = {
-    1: "#64748b",
-    2: "#4A8FA8",
-    3: "#16a34a",
-    4: "#C9A84C",
-    5: "#1A2B4A",
+    1: "#4B4B4B",
+    2: "#1f1f1f",
+    3: "#2f8f48",
+    4: "#38aa56",
+    5: "#111111",
   };
-  return colors[level] ?? "#1A2B4A";
+  return colors[level] ?? "#38aa56";
 }

@@ -36,9 +36,9 @@ export const defaultConfigurablesData: TDefaultConfigurableData = {
   appName: "Influence Coach",
   logoUrl: "FILL_LOGO_URL_HERE",
   brandColor: {
-    primary: "#1A2B4A",
-    secondary: "#4A8FA8",
-    accent: "#C9A84C",
+    primary: "#38aa56",
+    secondary: "#111111",
+    accent: "#38aa56",
   },
   tagline: "Build Your Leadership Influence with Maxwell's 5 Levels",
   welcomeMessage:

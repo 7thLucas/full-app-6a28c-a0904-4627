@@ -13,11 +13,11 @@ interface LevelIndicatorProps {
 }
 
 const LEVEL_COLORS: Record<number, { bg: string; text: string; border: string }> = {
-  1: { bg: "#64748b", text: "#ffffff", border: "#64748b" },
-  2: { bg: "#4A8FA8", text: "#ffffff", border: "#4A8FA8" },
-  3: { bg: "#16a34a", text: "#ffffff", border: "#16a34a" },
-  4: { bg: "#C9A84C", text: "#ffffff", border: "#C9A84C" },
-  5: { bg: "#1A2B4A", text: "#ffffff", border: "#1A2B4A" },
+  1: { bg: "#4B4B4B", text: "#ffffff", border: "#4B4B4B" },
+  2: { bg: "#1f1f1f", text: "#ffffff", border: "#1f1f1f" },
+  3: { bg: "#2f8f48", text: "#ffffff", border: "#2f8f48" },
+  4: { bg: "#38aa56", text: "#ffffff", border: "#38aa56" },
+  5: { bg: "#111111", text: "#ffffff", border: "#38aa56" },
 };
 
 export function LevelIndicator({
@@ -71,7 +71,7 @@ export function LevelIndicator({
                   isCurrent && "ring-2 ring-offset-1"
                 )}
                 style={{
-                  backgroundColor: isActive ? color.bg : "#DDD8CE",
+                  backgroundColor: isActive ? color.bg : "#E4E7E4",
                   ringColor: isCurrent ? color.bg : undefined,
                 }}
                 title={`Level ${lvl.level}: ${lvl.name}`}
@@ -89,7 +89,7 @@ export function LevelIndicator({
             {idx < levels.length - 1 && (
               <div
                 className="h-2 w-1 rounded-full flex-shrink-0"
-                style={{ backgroundColor: "#DDD8CE" }}
+                style={{ backgroundColor: "#E4E7E4" }}
               />
             )}
           </div>
