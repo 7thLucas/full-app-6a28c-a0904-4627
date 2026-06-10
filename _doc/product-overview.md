@@ -10,7 +10,12 @@ A professional AI coaching chatbot that helps leaders build their influence usin
 A focused, expert-guided coaching experience that makes Maxwell's proven leadership framework personal, accessible, and immediately actionable — available on demand, without the cost or scheduling friction of a human executive coach.
 
 ## Target Users
-Leaders at any stage — emerging managers, mid-level directors, and senior executives — who want to grow their influence and effectiveness with the people around them.
+Anyone who needs to build and extend their influence — regardless of sector or title:
+- **Corporate professionals** — managers, directors, and executives inside companies of any size
+- **NGO / non-profit leaders** — people who lead without traditional authority and must earn influence through mission and relationship
+- **Entrepreneurs and founders** — builders who must inspire teams, partners, investors, and customers with little formal power
+
+The single unifying trait: they are actively looking for a way to grow their influence and lead more effectively.
 
 ## Core Value Proposition
 The coach diagnoses where a leader currently stands within Maxwell's 5 Levels, then gives concise, empathetic, and actionable pointers to either strengthen influence at their current level or advance to the next.
