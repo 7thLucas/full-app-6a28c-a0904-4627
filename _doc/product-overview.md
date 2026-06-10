@@ -1,7 +1,13 @@
-# Product Overview
+# Product Overview — Influence Coach
+
+## Product Name
+**Influence Coach**
 
 ## What It Is
-A professional coaching chatbot that helps leaders build their influence using John Maxwell's 5 Levels of Leadership framework.
+A professional AI coaching chatbot that helps leaders build their influence using John Maxwell's 5 Levels of Leadership framework.
+
+## Positioning
+A focused, expert-guided coaching experience that makes Maxwell's proven leadership framework personal, accessible, and immediately actionable — available on demand, without the cost or scheduling friction of a human executive coach.
 
 ## Target Users
 Leaders at any stage — emerging managers, mid-level directors, and senior executives — who want to grow their influence and effectiveness with the people around them.
