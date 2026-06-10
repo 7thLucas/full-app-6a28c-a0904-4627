@@ -3,6 +3,7 @@ import { readdir } from "node:fs/promises";
 import { pathToFileURL } from "node:url";
 import { Router } from "express";
 import { createLogger } from "~/lib/logger";
+import influenceTimelineRoutes from "./influence-timeline.routes";
 
 type RouteModule = {
   default?: ReturnType<typeof Router>;
@@ -61,5 +62,10 @@ async function registerModuleRoutes(): Promise<void> {
 }
 
 await registerModuleRoutes();
+
+// Core app feature routes (not module-scoped). The Influence Growth Timeline
+// lives under app/api/ directly per project rules (no new top-level module
+// folder), so it is mounted explicitly here.
+router.use(influenceTimelineRoutes);
 
 export default router;

@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Send, ChevronDown } from "lucide-react";
+import { Link, useNavigate } from "react-router";
+import { Send, ChevronDown, TrendingUp, Check } from "lucide-react";
 import { useConfigurables } from "~/modules/configurables";
 import { invokeLLM } from "@qb/agentic";
 import { LevelIndicator } from "./level-indicator";
 import { CoachAvatar } from "./coach-avatar";
 import { TypingIndicator } from "./typing-indicator";
+import { saveSnapshot } from "~/hooks/use-influence-timeline";
 import { cn } from "~/lib/utils";
 
 export type MessageRole = "user" | "coach";
@@ -63,14 +65,27 @@ function buildConversationContext(messages: ChatMessage[]): string {
   return lines.join("\n\n");
 }
 
+function deriveSessionSummary(messages: ChatMessage[]): string {
+  // Prefer the most recent substantive coach message as the session takeaway.
+  const lastCoach = [...messages]
+    .reverse()
+    .find((m) => m.role === "coach" && m.content.trim().length > 0);
+  const raw = lastCoach?.content ?? "";
+  const collapsed = raw.replace(/\s+/g, " ").trim();
+  return collapsed.length > 280 ? `${collapsed.slice(0, 277)}...` : collapsed;
+}
+
 export function CoachChat() {
   const { config } = useConfigurables();
+  const navigate = useNavigate();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [isThinking, setIsThinking] = useState(false);
   const [currentLevel, setCurrentLevel] = useState<number | null>(null);
   const [started, setStarted] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);
+  const [savingSnapshot, setSavingSnapshot] = useState(false);
+  const [snapshotSaved, setSnapshotSaved] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -186,6 +201,30 @@ export function CoachChat() {
     [sendMessage],
   );
 
+  const handleSaveSnapshot = useCallback(
+    async (navigateAfter: boolean) => {
+      if (currentLevel == null || savingSnapshot) return;
+      setSavingSnapshot(true);
+      try {
+        const saved = await saveSnapshot({
+          level: currentLevel,
+          summary: deriveSessionSummary(messages),
+        });
+        if (saved) {
+          setSnapshotSaved(true);
+          if (navigateAfter) {
+            navigate("/timeline");
+            return;
+          }
+          setTimeout(() => setSnapshotSaved(false), 2500);
+        }
+      } finally {
+        setSavingSnapshot(false);
+      }
+    },
+    [currentLevel, savingSnapshot, messages, navigate],
+  );
+
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       setInput(e.target.value);
@@ -227,6 +266,14 @@ export function CoachChat() {
             <LevelIndicator currentLevel={currentLevel} maxwellLevels={maxwellLevels} compact />
           </div>
         )}
+        <Link
+          to="/timeline"
+          className="flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-full hover:bg-white/10 transition-colors"
+          aria-label="View growth timeline"
+          title="View growth timeline"
+        >
+          <TrendingUp className="w-5 h-5 text-white" />
+        </Link>
       </header>
 
       {/* Level bar */}
@@ -265,6 +312,36 @@ export function CoachChat() {
         >
           <ChevronDown className="w-4 h-4" />
         </button>
+      )}
+
+      {/* Save-snapshot bar — appears once a level has been diagnosed */}
+      {currentLevel != null && (
+        <div className="border-t border-border bg-muted px-4 py-2">
+          <div className="flex items-center justify-between gap-2 max-w-4xl mx-auto">
+            <p className="text-xs text-muted-foreground min-w-0 truncate">
+              {snapshotSaved
+                ? "Snapshot saved to your timeline"
+                : "End of session? Save a snapshot of your progress."}
+            </p>
+            <button
+              type="button"
+              onClick={() => handleSaveSnapshot(true)}
+              disabled={savingSnapshot}
+              className={cn(
+                "flex-shrink-0 flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full transition-all",
+                "shadow-sm hover:opacity-90 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed",
+              )}
+              style={{ backgroundColor: "var(--accent)", color: "var(--primary)" }}
+            >
+              {snapshotSaved ? (
+                <Check className="w-3.5 h-3.5" />
+              ) : (
+                <TrendingUp className="w-3.5 h-3.5" />
+              )}
+              {savingSnapshot ? "Saving..." : snapshotSaved ? "Saved" : "Save & view timeline"}
+            </button>
+          </div>
+        </div>
       )}
 
       {/* Input area */}
@@ -540,6 +617,14 @@ function LandingScreen({
         >
           {ctaLabel}
         </button>
+        <Link
+          to="/timeline"
+          className="mt-3 w-full flex items-center justify-center gap-2 py-3 px-8 rounded-2xl font-medium text-sm border border-border bg-card hover:bg-muted transition-all"
+          style={{ color: "var(--foreground)" }}
+        >
+          <TrendingUp className="w-4 h-4" style={{ color: "var(--accent)" }} />
+          View my growth timeline
+        </Link>
         <p className="text-center text-xs text-muted-foreground mt-4">
           {config.footerText ?? "Influence Coach — Powered by Maxwell's 5 Levels of Leadership"}
         </p>
