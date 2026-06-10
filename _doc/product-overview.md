@@ -20,6 +20,13 @@ The single unifying trait: they are actively looking for a way to grow their inf
 ## Core Value Proposition
 The coach diagnoses where a leader currently stands within Maxwell's 5 Levels, then gives concise, empathetic, and actionable pointers to either strengthen influence at their current level or advance to the next.
 
+## Brand Colors
+- **Primary:** `#38aa56` (green) — used for accents, highlights, chips, dividers, and dark-filled call-to-action bands
+- **Black** — used for headlines, body text, and dark feature/summary panels
+- **White** — used for backgrounds and for text placed on dark or green fills
+
+(For text directly on white, a darkened shade of the green is used where needed to preserve legibility; the green is used at full strength as a fill or accent.)
+
 ## Voice and Tone
 - Encouraging
 - Concise and simple
