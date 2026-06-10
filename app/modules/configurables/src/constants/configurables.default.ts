@@ -12,35 +12,47 @@ export type TBrandColor = {
   accent: string;
 };
 
+export type TMaxwellLevel = {
+  level: number;
+  name: string;
+  description: string;
+};
+
 export type TDefaultConfigurableData = {
   appName: string;
   logoUrl: string;
   brandColor: TBrandColor;
-  // Mirror new schema fields here. Example:
-  //   maxItemsPerPage?: number;
-  //   enableNotifications?: boolean;
-  //   featuredCategories?: string[];
+  tagline?: string;
+  welcomeMessage?: string;
+  coachName?: string;
+  chatPlaceholder?: string;
+  ctaLabel?: string;
+  showLevelIndicator?: boolean;
+  maxwellLevels?: TMaxwellLevel[];
+  footerText?: string;
 };
 
 export const defaultConfigurablesData: TDefaultConfigurableData = {
-  appName: "FILL_APP_NAME_HERE",
+  appName: "Influence Coach",
   logoUrl: "FILL_LOGO_URL_HERE",
   brandColor: {
-    primary: "FILL_PRIMARY_COLOR_HERE",
-    secondary: "FILL_SECONDARY_COLOR_HERE",
-    accent: "FILL_ACCENT_COLOR_HERE",
+    primary: "#1A2B4A",
+    secondary: "#4A8FA8",
+    accent: "#C9A84C",
   },
-  // ─────────────────────────────────────────────────────────────────────
-  // Add new field defaults here. See RULES.md §5 for per-type shape.
-  // Required branding fields → use the FILL_X_HERE placeholder pattern.
-  // Optional/typed defaults → real value with a "// fill it here" comment:
-  //
-  //   maxItemsPerPage: 12,                     // fill it here
-  //   enableNotifications: true,               // fill it here
-  //   featuredCategories: [],                  // fill it here
-  //   defaultLanguage: "en",                   // must match enum options
-  //   launchDate: "2025-01-01T00:00:00.000Z",  // ISO-8601
-  //   heroImage: "",                           // resolved URL after upload
-  //   galleryImages: [],                       // array of resolved URLs
-  // ─────────────────────────────────────────────────────────────────────
+  tagline: "Build Your Leadership Influence with Maxwell's 5 Levels",
+  welcomeMessage:
+    "Welcome! I'm your Influence Coach. I help leaders like you understand where you stand in Maxwell's 5 Levels of Leadership and give you clear, actionable steps to grow your influence. Tell me about your leadership situation and let's get started.",
+  coachName: "Influence Coach",
+  chatPlaceholder: "Describe your leadership situation or ask about your influence...",
+  ctaLabel: "Start Coaching",
+  showLevelIndicator: true,
+  maxwellLevels: [
+    { level: 1, name: "Position", description: "People follow because they have to" },
+    { level: 2, name: "Permission", description: "People follow because they want to" },
+    { level: 3, name: "Production", description: "People follow because of what you've done for the organization" },
+    { level: 4, name: "People Development", description: "People follow because of what you've done for them" },
+    { level: 5, name: "Pinnacle", description: "People follow because of who you are and what you represent" },
+  ],
+  footerText: "Influence Coach — Powered by Maxwell's 5 Levels of Leadership",
 };
