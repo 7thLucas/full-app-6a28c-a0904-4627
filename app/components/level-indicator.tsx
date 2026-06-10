@@ -72,8 +72,8 @@ export function LevelIndicator({
                 )}
                 style={{
                   backgroundColor: isActive ? color.bg : "#E4E7E4",
-                  ringColor: isCurrent ? color.bg : undefined,
-                }}
+                  ...(isCurrent ? { ["--tw-ring-color" as string]: color.bg } : {}),
+                } as React.CSSProperties}
                 title={`Level ${lvl.level}: ${lvl.name}`}
               />
               <span
