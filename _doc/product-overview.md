@@ -37,6 +37,7 @@ The coach diagnoses where a leader currently stands within Maxwell's 5 Levels, t
 - Conversational chatbot interface
 - Leadership influence diagnosis based on Maxwell's 5 Levels
 - Personalized coaching advice to deepen or advance influence
+- Influence growth timeline — saves a level snapshot after each coaching session and visualizes the leader's progression over time
 - Structured around Maxwell's 5 Levels: Position, Permission, Production, People Development, Pinnacle
 
 ## Framework
