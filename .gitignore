@@ -10,3 +10,12 @@ package-lock.json
 
 # QB agentic per-deck context (deck_id, keyspace, conversation_id)
 .qb/
+
+# App Preview injected files (auto-generated, do not commit)
+.skaffold.pid
+.skaffold/
+k8s/
+.skaffold.lock
+Dockerfile.dev
+.docker/
+skaffold.yaml
